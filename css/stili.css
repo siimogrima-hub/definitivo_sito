@@ -1,0 +1,390 @@
+/* =========================
+   css/stili.css (COMPLETO)
+   ========================= */
+
+/* -------------------------
+   LOCAL FONTS
+   ------------------------- */
+
+@font-face {
+  font-family: "MDIO";
+  src: url("../fonts/MDIO-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MDIO";
+  src: url("../fonts/MDIO-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mansalva";
+  src: url("../fonts/Mansalva-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Times CG";
+  src: url("../fonts/Times%20CG.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* -------------------------
+   VARIABILI
+   ------------------------- */
+
+:root {
+  --page-pad: 20px;
+  --gutter: 20px;
+
+  --text: #111;
+  --bg: #fff;
+
+  --title-font: "MDIO", serif;
+  --body-font: "MDIO", serif;
+  --serif-font: "Times CG", serif;
+  --date-font: "Mansalva", cursive;
+
+  --space-block: 20px;
+  --space-project: 10px;
+  --space-title-meta: 0px;
+
+  /* mobile */
+  --gif-fixed-h: 220px;
+  --mobile-photo-w: 140px;
+  --mobile-projects-offset: 100px;
+
+  /* underline */
+  --u-thickness: 1px;
+  --u-offset: 3px;
+}
+
+/* -------------------------
+   BASE / RESET
+   ------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+
+  font-size: 20px;
+  line-height: 1.2;
+
+  font-family: var(--body-font);
+  font-weight: 500;
+  font-style: italic;
+}
+
+h1,
+h2,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* -------------------------
+   GRID LAYOUT (DESKTOP)
+   ------------------------- */
+
+.page {
+  min-height: 100svh;
+  padding: var(--page-pad);
+
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  align-items: start;
+
+  position: relative; /* overlay gif */
+}
+
+/* colonne */
+.left {
+  grid-column: 1 / 2;
+}
+
+.photo {
+  grid-column: 2 / 3;
+}
+
+.projects-area {
+  grid-column: 4 / 6;
+}
+
+.right {
+  grid-column: 6 / 7;
+  justify-self: end;
+  text-align: right;
+}
+
+/* foto col 2 */
+.photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* -------------------------
+   GIF OVERLAY (DESKTOP)
+   ------------------------- */
+
+.hero-gif {
+  position: absolute;
+  top: var(--page-pad);
+  left: var(--page-pad);
+
+  width: calc(((100% - (5 * var(--gutter))) / 6) * 3 + (2 * var(--gutter)));
+  height: auto;
+
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-gif img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* -------------------------
+   TITOLI (BOLD)
+   ------------------------- */
+
+.brand,
+.section-title {
+  font-family: var(--title-font);
+  font-weight: 700;
+  font-style: normal;
+
+  font-size: 20px;
+  line-height: 1.2;
+
+  white-space: nowrap;
+}
+
+.brand {
+  font-size: 23.5px;
+}
+
+/* -------------------------
+   HOVER / LINK STYLING
+   - Simone Grimaldi: NO hover
+   - Projects (titolo in alto): NO hover
+   - About and Contacts (in alto): SI hover + link nero
+   - Lista progetti: SI hover
+   ------------------------- */
+
+/* About and Contacts in alto (ora è un <a>) */
+.right .section-title {
+  color: inherit;
+  text-decoration: none;
+  text-decoration-thickness: var(--u-thickness);
+  text-underline-offset: var(--u-offset);
+}
+
+.right .section-title:visited {
+  color: inherit;
+}
+
+.right .section-title:hover {
+  text-decoration: underline;
+}
+
+/* Simone: no hover */
+.brand:hover {
+  text-decoration: none;
+}
+
+/* -------------------------
+   SINISTRA
+   ------------------------- */
+
+.tagline {
+  margin-top: var(--space-block);
+
+  font-family: var(--serif-font);
+  font-weight: 400;
+  font-style: normal;
+
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+/* -------------------------
+   PROJECTS LIST
+   ------------------------- */
+
+.projects {
+  margin-top: var(--space-block);
+  list-style: none;
+}
+
+.project {
+  margin-bottom: var(--space-project);
+}
+
+/* underline su tutta la voce */
+.project-link {
+  display: inline-block;
+  color: inherit;
+  cursor: pointer;
+
+  text-decoration: none;
+  text-decoration-thickness: var(--u-thickness);
+  text-underline-offset: var(--u-offset);
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
+.project-link .project-title,
+.project-link .project-meta {
+  display: block;
+}
+
+/* titolo progetto: MDIO MediumItalic */
+.project-title {
+  font-family: var(--body-font);
+  font-weight: 500;
+  font-style: italic;
+
+  font-size: 20px;
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+.project-title em {
+  font-style: italic;
+}
+
+/* date: Mansalva */
+.date {
+  font-family: var(--date-font);
+  font-weight: 400;
+  font-style: normal;
+
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* meta: Times CG */
+.project-meta {
+  margin-top: var(--space-title-meta);
+
+  font-family: var(--serif-font);
+  font-weight: 400;
+  font-style: normal;
+
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* -------------------------
+   MOBILE
+   - foto a sinistra + testo a destra (gutter 20)
+   - projects più in basso di 100px
+   - gif fixed bottom con margini 20px
+   ------------------------- */
+
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: var(--mobile-photo-w) var(--gutter) 1fr;
+    column-gap: 0;
+    row-gap: 20px;
+
+    padding-bottom: calc(var(--page-pad) + var(--gif-fixed-h));
+  }
+
+  .photo {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    justify-self: start;
+    align-self: start;
+  }
+
+  .photo img {
+    width: 100%;
+    height: auto;
+  }
+
+  .left {
+    grid-column: 3 / 4;
+    grid-row: 1;
+    justify-self: start;
+    align-self: start;
+    text-align: left;
+  }
+
+  /* nome sempre in una riga, riduce se serve + spazio sotto */
+  .brand {
+    white-space: nowrap;
+    font-size: clamp(16px, 6vw, 23.5px);
+    margin-bottom: 20px;
+  }
+
+  .projects-area {
+    grid-column: 1 / 4;
+    grid-row: 2;
+    justify-self: start;
+    text-align: left;
+
+    margin-top: var(--mobile-projects-offset);
+  }
+
+  .right {
+    grid-column: 1 / 4;
+    grid-row: 3;
+    justify-self: start;
+    text-align: left;
+  }
+
+  .section-title,
+  .project-title {
+    white-space: normal;
+  }
+
+  /* GIF fixed bottom con margini 20px dx/sx */
+  .hero-gif {
+    position: fixed;
+    left: var(--page-pad);
+    right: var(--page-pad);
+    bottom: 0;
+    top: auto;
+
+    width: auto;
+    height: var(--gif-fixed-h);
+
+    z-index: 999;
+    pointer-events: none;
+  }
+
+  .hero-gif img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom;
+  }
+}

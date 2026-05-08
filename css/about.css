@@ -1,0 +1,135 @@
+/* =========================
+   css/about.css (COMPLETO)
+   ========================= */
+
+/* Desktop: stessa griglia 6 colonne */
+.about-page {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  grid-template-rows: auto;
+}
+
+/* col 1-3 */
+.about-left {
+  grid-column: 1 / 4;
+  align-self: start;
+}
+
+/* col 4 */
+.about-contacts {
+  grid-column: 4 / 5;
+  align-self: start;
+}
+
+/* col 5-6 */
+.about-portrait {
+  grid-column: 5 / 7;
+  align-self: start;
+
+  /* a filo bordo destro + bordo alto (annulla padding pagina) */
+  margin-right: calc(var(--pad) * -1);
+  margin-top: calc(var(--pad) * -1);
+}
+
+.about-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Titoli: MDIO 20 */
+.about-heading {
+  margin: 0;
+  font-family: "MDIO", serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Testo lungo: Times CG 20 */
+.about-text {
+  margin-top: 20px;
+  font-family: "Times CG", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.about-text p {
+  margin: 0 0 20px 0;
+}
+
+/* Contacts */
+.contacts {
+  margin-top: 20px;
+}
+
+/* Label e-mail/instagram: MDIO 20 */
+.contact-label {
+  margin: 0;
+  font-family: "MDIO", serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Values: Times CG 20 (e-mail + handle) */
+.contact-value {
+  margin: 4px 0 0 0;
+  font-family: "Times CG", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+/* spazio tra blocchi */
+.contacts-gap {
+  height: 20px;
+}
+
+/* =========================
+   MOBILE (condensed)
+   - portrait PRIMO full-bleed top/left/right
+   - back FISSO bottom-right sopra la gif
+   ========================= */
+@media (max-width: 900px) {
+  .about-page {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  /* ordine: portrait -> who -> contacts */
+  .about-portrait {
+    order: 0;
+    grid-column: 1 / -1;
+
+    margin-left: calc(var(--pad) * -1);
+    margin-right: calc(var(--pad) * -1);
+    margin-top: calc(var(--pad) * -1);
+    margin-bottom: 0;
+  }
+
+  .about-left {
+    order: 1;
+    grid-column: 1 / -1;
+  }
+
+  .about-contacts {
+    order: 2;
+    grid-column: 1 / -1;
+  }
+
+  /* back resta in fondo a destra, in overlay sopra la gif */
+  .about-page .back {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 2;
+    margin: 0;
+  }
+}

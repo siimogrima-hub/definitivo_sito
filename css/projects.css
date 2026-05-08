@@ -1,0 +1,381 @@
+/* =========================
+   css/projects.css (COMPLETO)
+   ========================= */
+
+:root {
+  --pad: 20px;
+  --gutter: 20px;
+  --fade-ms: 160ms;
+}
+
+/* =========================
+   LAYOUT PAGINA PROGETTO
+   ========================= */
+
+.project-page {
+  min-height: 100svh;
+  padding: var(--pad);
+
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  grid-template-rows: auto auto;
+  row-gap: 0;
+
+  overflow-x: hidden;
+}
+
+.p-left {
+  grid-column: 1 / 4;
+  grid-row: 1;
+  align-self: start;
+}
+
+.p-right {
+  grid-column: 4 / 7;
+  grid-row: 1;
+  align-self: start;
+}
+
+.p-media {
+  grid-column: 1 / 4;
+  grid-row: 2;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  /* lascia hidden per sicurezza layout, ma nav avrà padding */
+  overflow-x: hidden;
+}
+
+/* =========================
+   TIPOGRAFIA
+   ========================= */
+
+.project-page,
+.project-page * {
+  font-size: 20px;
+}
+
+.p-title {
+  font-family: "MDIO", serif;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1;
+}
+
+.p-subtitle {
+  font-family: "Times CG", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+}
+
+.p-heading {
+  font-family: "MDIO", serif;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.p-paragraph {
+  font-family: "Times CG", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.p-right > :last-child {
+  margin-bottom: 0;
+}
+
+/* =========================
+   NAV
+   ========================= */
+
+.p-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* ✅ evita il clipping del cerchio sul bordo */
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/* ✅ frecce centrate nel cerchio */
+.nav-btn {
+  width: 34px;
+  height: 34px;
+
+  border: 2px solid #111;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  margin: 0;
+
+  background: transparent;
+  cursor: pointer;
+
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+  font-size: 20px;
+  line-height: 1;
+
+  vertical-align: middle;
+}
+
+/* micro correzione ottica */
+.nav-btn[data-carousel-prev] {
+  transform: translateX(-0.5px);
+}
+.nav-btn[data-carousel-next] {
+  transform: translateX(0.5px);
+}
+
+/* =========================
+   FADE CAROUSEL (IMG/GIF/VIDEO)
+   ========================= */
+
+.p-photo {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.fade-carousel {
+  position: relative;
+  width: 100%;
+}
+
+/* tutte sovrapposte */
+.fade-slide {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  position: absolute;
+  inset: 0;
+
+  opacity: 0;
+  transition: opacity var(--fade-ms) linear;
+}
+
+/* IMPORTANTISSIMO: solo la slide attiva è cliccabile */
+.fade-slide {
+  pointer-events: none;
+}
+
+.fade-slide.is-active {
+  pointer-events: auto;
+}
+
+/* cursore: zoom solo su immagini, non su video */
+.fade-carousel .fade-slide.is-active {
+  cursor: default;
+}
+.fade-carousel img.fade-slide.is-active {
+  cursor: zoom-in;
+}
+
+/* attiva = visibile + prende altezza */
+.fade-slide.is-active {
+  opacity: 1;
+  position: relative;
+}
+
+/* fade-out dell’attiva durante lo switch */
+.fade-carousel.is-fading .fade-slide.is-active {
+  opacity: 0;
+}
+
+/* video slide */
+.fade-carousel video.fade-slide {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* indicazione cliccabile */
+.fade-carousel .fade-slide.is-active {
+  cursor: zoom-in;
+}
+
+/* =========================
+   BACK LINK (in basso a destra)
+   ========================= */
+
+.back {
+  grid-column: 6 / 7;
+  grid-row: 2;
+  justify-self: end;
+  align-self: end;
+
+  position: relative;
+  z-index: 2;
+
+  font-family: "MDIO", serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1;
+
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/* =========================
+   LIGHTBOX (IMMAGINI)
+   ========================= */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 9999;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   GIF OVERLAY sotto "Back"
+   (1 colonna su 6) bottom-right, no margini
+   ========================= */
+
+.back-gif {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+
+  width: calc(100vw / 6);
+  height: auto;
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+.back-gif img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* =========================
+   MOBILE STACK
+   ========================= */
+
+@media (max-width: 900px) {
+  .project-page {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: 20px;
+  }
+
+  .p-left,
+  .p-right,
+  .p-media,
+  .back {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .back {
+    justify-self: end;
+    margin-top: 10px;
+  }
+
+  .back-gif {
+    width: calc(100vw / 6);
+  }
+}
+
+/* Lightbox nav buttons */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 9999;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+/* frecce dentro lightbox */
+.lightbox-btn {
+  width: 34px;
+  height: 34px;
+
+  border: 2px solid #fff;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1;
+
+  user-select: none;
+}
+
+.lightbox-prev {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox-next {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
