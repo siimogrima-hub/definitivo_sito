@@ -178,7 +178,7 @@ ul {
   white-space: nowrap;
 }
 
-/* SOLO nome: 23.5 */
+/* SOLO nome: desktop 23.5 */
 .brand {
   font-size: 23.5px;
 }
@@ -311,7 +311,7 @@ ul {
     column-gap: 0;
     row-gap: 20px;
 
-    /* ✅ margini 20px su tutti i lati */
+    /* margini 20px su tutti i lati */
     padding: var(--page-pad);
 
     /* spazio extra per gif fixed */
@@ -330,7 +330,7 @@ ul {
     height: auto;
   }
 
-  /* ✅ testo a destra della foto con margine destro 20px */
+  /* testo a destra della foto con margine destro 20px */
   .left {
     grid-column: 3 / 4;
     grid-row: 1;
@@ -342,10 +342,10 @@ ul {
     padding-right: var(--page-pad);
   }
 
-  /* ✅ nome: una riga, si riduce se serve */
+  /* ✅ RIDOTTO: nome sempre su una riga e più piccolo su mobile */
   .brand {
     white-space: nowrap;
-    font-size: clamp(16px, 5.2vw, 23.5px);
+    font-size: clamp(13px, 4.2vw, 19px);
     margin-bottom: 20px; /* accapo tra nome e tagline */
   }
 
@@ -370,7 +370,7 @@ ul {
     white-space: normal;
   }
 
-  /* GIF fixed bottom con margini 20px dx/sx e senza margine basso */
+  /* GIF fixed bottom con margini 20px dx/sx */
   .hero-gif {
     position: fixed;
     left: var(--page-pad);
