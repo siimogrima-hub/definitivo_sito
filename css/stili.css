@@ -5,7 +5,6 @@
 /* -------------------------
    LOCAL FONTS
    ------------------------- */
-
 @font-face {
   font-family: "MDIO";
   src: url("../fonts/MDIO-BoldItalic.ttf") format("truetype");
@@ -41,7 +40,6 @@
 /* -------------------------
    VARIABILI
    ------------------------- */
-
 :root {
   --page-pad: 20px;
   --gutter: 20px;
@@ -49,8 +47,8 @@
   --text: #111;
   --bg: #fff;
 
-  --title-font: "MDIO", serif;
-  --body-font: "MDIO", serif;
+  --title-font: "MDIO", serif; /* titoli bold */
+  --body-font: "MDIO", serif;  /* mdio medium italic */
   --serif-font: "Times CG", serif;
   --date-font: "Mansalva", cursive;
 
@@ -71,7 +69,6 @@
 /* -------------------------
    BASE / RESET
    ------------------------- */
-
 * {
   box-sizing: border-box;
 }
@@ -105,7 +102,6 @@ ul {
 /* -------------------------
    GRID LAYOUT (DESKTOP)
    ------------------------- */
-
 .page {
   min-height: 100svh;
   padding: var(--page-pad);
@@ -147,12 +143,12 @@ ul {
 /* -------------------------
    GIF OVERLAY (DESKTOP)
    ------------------------- */
-
 .hero-gif {
   position: absolute;
   top: var(--page-pad);
   left: var(--page-pad);
 
+  /* 3 colonne (1-3) con 2 gutter interni */
   width: calc(((100% - (5 * var(--gutter))) / 6) * 3 + (2 * var(--gutter)));
   height: auto;
 
@@ -170,7 +166,6 @@ ul {
 /* -------------------------
    TITOLI (BOLD)
    ------------------------- */
-
 .brand,
 .section-title {
   font-family: var(--title-font);
@@ -183,19 +178,21 @@ ul {
   white-space: nowrap;
 }
 
+/* SOLO nome: 23.5 */
 .brand {
   font-size: 23.5px;
 }
 
 /* -------------------------
    HOVER / LINK STYLING
+   Regole richieste:
    - Simone Grimaldi: NO hover
    - Projects (titolo in alto): NO hover
    - About and Contacts (in alto): SI hover + link nero
-   - Lista progetti: SI hover
+   - Lista progetti: SI hover (underline su tutta la riga)
    ------------------------- */
 
-/* About and Contacts in alto (ora è un <a>) */
+/* About and Contacts in alto (è un <a>) */
 .right .section-title {
   color: inherit;
   text-decoration: none;
@@ -219,7 +216,6 @@ ul {
 /* -------------------------
    SINISTRA
    ------------------------- */
-
 .tagline {
   margin-top: var(--space-block);
 
@@ -234,7 +230,6 @@ ul {
 /* -------------------------
    PROJECTS LIST
    ------------------------- */
-
 .projects {
   margin-top: var(--space-block);
   list-style: none;
@@ -303,18 +298,23 @@ ul {
 }
 
 /* -------------------------
-   MOBILE
-   - foto a sinistra + testo a destra (gutter 20)
-   - projects più in basso di 100px
-   - gif fixed bottom con margini 20px
+   MOBILE (iphone / schermi stretti)
+   - foto piccola a sinistra
+   - testo a destra con gutter 20 + margine destro 20
+   - titolo sempre su una riga (riduce se serve)
+   - projects 100px più in basso
+   - gif fixed bottom overlay
    ------------------------- */
-
 @media (max-width: 900px) {
   .page {
     grid-template-columns: var(--mobile-photo-w) var(--gutter) 1fr;
     column-gap: 0;
     row-gap: 20px;
 
+    /* ✅ margini 20px su tutti i lati */
+    padding: var(--page-pad);
+
+    /* spazio extra per gif fixed */
     padding-bottom: calc(var(--page-pad) + var(--gif-fixed-h));
   }
 
@@ -330,19 +330,23 @@ ul {
     height: auto;
   }
 
+  /* ✅ testo a destra della foto con margine destro 20px */
   .left {
     grid-column: 3 / 4;
     grid-row: 1;
     justify-self: start;
     align-self: start;
     text-align: left;
+
+    width: 100%;
+    padding-right: var(--page-pad);
   }
 
-  /* nome sempre in una riga, riduce se serve + spazio sotto */
+  /* ✅ nome: una riga, si riduce se serve */
   .brand {
     white-space: nowrap;
-    font-size: clamp(16px, 6vw, 23.5px);
-    margin-bottom: 20px;
+    font-size: clamp(16px, 5.2vw, 23.5px);
+    margin-bottom: 20px; /* accapo tra nome e tagline */
   }
 
   .projects-area {
@@ -366,7 +370,7 @@ ul {
     white-space: normal;
   }
 
-  /* GIF fixed bottom con margini 20px dx/sx */
+  /* GIF fixed bottom con margini 20px dx/sx e senza margine basso */
   .hero-gif {
     position: fixed;
     left: var(--page-pad);
