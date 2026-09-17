@@ -133,3 +133,52 @@
     margin: 0;
   }
 }
+
+/* -------------------------
+   ARTICLES
+   ------------------------- */
+
+.articles {
+  margin-top: 60px;
+}
+
+.articles-heading {
+  margin: 0 0 20px;
+
+  font-family: "MDIO", serif;
+  font-weight: 700;
+  font-style: italic;
+
+  font-size: 20px;
+  line-height: 1;
+}
+
+.article-item {
+  margin: 0 0 20px;
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.article-publication {
+  font-family: "MDIO", serif;
+  font-weight: 600;
+  font-style: italic;
+
+  font-size: 17px;
+  line-height: 1.15;
+}
+
+.article-link {
+  font-family: "Times CG", serif;
+  font-weight: 400;
+  font-style: normal;
+
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.article-link:visited {
+  color: inherit;
+}
