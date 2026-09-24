@@ -132,6 +132,32 @@
     z-index: 2;
     margin: 0;
   }
+  @media (max-width: 900px) {
+  .about-page {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .about-left,
+  .about-contacts,
+  .about-text,
+  .contacts,
+  .articles {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .about-text,
+  .contact-value,
+  .article-item,
+  .article-link {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+}
 }
 
 /* -------------------------
