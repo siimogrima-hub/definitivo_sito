@@ -1,10 +1,7 @@
 /* =========================
-   css/stili.css (COMPLETO)
+   LOCAL FONTS
    ========================= */
 
-/* -------------------------
-   LOCAL FONTS
-   ------------------------- */
 @font-face {
   font-family: "MDIO";
   src: url("../fonts/MDIO-BoldItalic.ttf") format("truetype");
@@ -37,9 +34,11 @@
   font-display: swap;
 }
 
-/* -------------------------
-   VARIABILI
-   ------------------------- */
+
+/* =========================
+   VARIABLES
+   ========================= */
+
 :root {
   --page-pad: 20px;
   --gutter: 20px;
@@ -47,8 +46,8 @@
   --text: #111;
   --bg: #fff;
 
-  --title-font: "MDIO", serif; /* titoli bold */
-  --body-font: "MDIO", serif;  /* mdio medium italic */
+  --title-font: "MDIO", serif;
+  --body-font: "MDIO", serif;
   --serif-font: "Times CG", serif;
   --date-font: "Mansalva", cursive;
 
@@ -56,19 +55,19 @@
   --space-project: 10px;
   --space-title-meta: 0px;
 
-  /* mobile */
   --gif-fixed-h: 220px;
   --mobile-photo-w: 140px;
   --mobile-projects-offset: 100px;
 
-  /* underline */
   --u-thickness: 1px;
   --u-offset: 3px;
 }
 
-/* -------------------------
-   BASE / RESET
-   ------------------------- */
+
+/* =========================
+   RESET / BASE
+   ========================= */
+
 * {
   box-sizing: border-box;
 }
@@ -80,15 +79,18 @@ body {
 
 body {
   margin: 0;
+
   background: var(--bg);
   color: var(--text);
 
-  font-size: 20px;
-  line-height: 1.2;
-
   font-family: var(--body-font);
+  font-size: 20px;
   font-weight: 500;
   font-style: italic;
+
+  line-height: 1.2;
+
+  overflow-x: hidden;
 }
 
 h1,
@@ -99,22 +101,33 @@ ul {
   padding: 0;
 }
 
-/* -------------------------
-   GRID LAYOUT (DESKTOP)
-   ------------------------- */
+
+/* =========================
+   DESKTOP GRID
+   ========================= */
+
 .page {
+  position: relative;
+
   min-height: 100svh;
+
   padding: var(--page-pad);
 
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  column-gap: var(--gutter);
-  align-items: start;
 
-  position: relative; /* overlay gif */
+  grid-template-columns:
+    repeat(6, minmax(0, 1fr));
+
+  column-gap: var(--gutter);
+
+  align-items: start;
 }
 
-/* colonne */
+
+/* =========================
+   HOME COLUMNS
+   ========================= */
+
 .left {
   grid-column: 1 / 2;
 }
@@ -129,75 +142,96 @@ ul {
 
 .right {
   grid-column: 6 / 7;
+
   justify-self: end;
+
   text-align: right;
 }
 
-/* foto col 2 */
+
+/* =========================
+   PHOTO
+   ========================= */
+
 .photo img {
   display: block;
+
   width: 100%;
   height: auto;
 }
 
-/* -------------------------
-   GIF OVERLAY (DESKTOP)
-   ------------------------- */
+
+/* =========================
+   DECORATIVE GIF DESKTOP
+   ========================= */
+
 .hero-gif {
   position: absolute;
+
   top: var(--page-pad);
   left: var(--page-pad);
 
-  /* 3 colonne (1-3) con 2 gutter interni */
-  width: calc(((100% - (5 * var(--gutter))) / 6) * 3 + (2 * var(--gutter)));
+  width:
+    calc(
+      ((100% - (5 * var(--gutter))) / 6)
+      * 3
+      + (2 * var(--gutter))
+    );
+
   height: auto;
 
   z-index: 2;
+
   pointer-events: none;
 }
 
 .hero-gif img {
   display: block;
+
   width: 100%;
   height: auto;
+
   object-fit: contain;
 }
 
-/* -------------------------
-   TITOLI (BOLD)
-   ------------------------- */
+
+/* =========================
+   HEADINGS
+   ========================= */
+
 .brand,
 .section-title {
   font-family: var(--title-font);
+
   font-weight: 700;
   font-style: normal;
 
   font-size: 20px;
+
   line-height: 1.2;
 
   white-space: nowrap;
 }
 
-/* SOLO nome: desktop 23.5 */
 .brand {
   font-size: 23.5px;
 }
 
-/* -------------------------
-   HOVER / LINK STYLING
-   Regole richieste:
-   - Simone Grimaldi: NO hover
-   - Projects (titolo in alto): NO hover
-   - About and Contacts (in alto): SI hover + link nero
-   - Lista progetti: SI hover (underline su tutta la riga)
-   ------------------------- */
 
-/* About and Contacts in alto (è un <a>) */
+/* =========================
+   ABOUT LINK
+   ========================= */
+
 .right .section-title {
   color: inherit;
+
   text-decoration: none;
-  text-decoration-thickness: var(--u-thickness);
-  text-underline-offset: var(--u-offset);
+
+  text-decoration-thickness:
+    var(--u-thickness);
+
+  text-underline-offset:
+    var(--u-offset);
 }
 
 .right .section-title:visited {
@@ -208,30 +242,36 @@ ul {
   text-decoration: underline;
 }
 
-/* Simone: no hover */
 .brand:hover {
   text-decoration: none;
 }
 
-/* -------------------------
-   SINISTRA
-   ------------------------- */
+
+/* =========================
+   TAGLINE
+   ========================= */
+
 .tagline {
   margin-top: var(--space-block);
 
   font-family: var(--serif-font);
+
   font-weight: 400;
   font-style: normal;
 
   font-size: 20px;
+
   line-height: 1.2;
 }
 
-/* -------------------------
-   PROJECTS LIST
-   ------------------------- */
+
+/* =========================
+   PROJECT LIST
+   ========================= */
+
 .projects {
   margin-top: var(--space-block);
+
   list-style: none;
 }
 
@@ -239,15 +279,25 @@ ul {
   margin-bottom: var(--space-project);
 }
 
-/* underline su tutta la voce */
+
+/* =========================
+   PROJECT LINKS
+   ========================= */
+
 .project-link {
   display: inline-block;
+
   color: inherit;
+
   cursor: pointer;
 
   text-decoration: none;
-  text-decoration-thickness: var(--u-thickness);
-  text-underline-offset: var(--u-offset);
+
+  text-decoration-thickness:
+    var(--u-thickness);
+
+  text-underline-offset:
+    var(--u-offset);
 }
 
 .project-link:hover {
@@ -259,13 +309,19 @@ ul {
   display: block;
 }
 
-/* titolo progetto: MDIO MediumItalic */
+
+/* =========================
+   PROJECT TITLE
+   ========================= */
+
 .project-title {
   font-family: var(--body-font);
+
   font-weight: 500;
   font-style: italic;
 
   font-size: 20px;
+
   line-height: 1;
 
   white-space: nowrap;
@@ -275,52 +331,199 @@ ul {
   font-style: italic;
 }
 
-/* date: Mansalva */
+
+/* =========================
+   DATE
+   ========================= */
+
 .date {
   font-family: var(--date-font);
+
   font-weight: 400;
   font-style: normal;
 
   font-size: 20px;
+
   line-height: 1;
 }
 
-/* meta: Times CG */
+
+/* =========================
+   PROJECT META
+   ========================= */
+
 .project-meta {
   margin-top: var(--space-title-meta);
 
   font-family: var(--serif-font);
+
   font-weight: 400;
   font-style: normal;
 
   font-size: 20px;
+
   line-height: 1;
 }
 
-/* -------------------------
-   MOBILE (iphone / schermi stretti)
-   - foto piccola a sinistra
-   - testo a destra con gutter 20 + margine destro 20
-   - titolo sempre su una riga (riduce se serve)
-   - projects 100px più in basso
-   - gif fixed bottom overlay
-   ------------------------- */
+
+/* =========================
+   PROJECT HOVER PREVIEW
+   ========================= */
+
+.project-hover-preview {
+  position: fixed;
+
+  left: 20px;
+  bottom: 35px;
+
+  /*
+    Area dedicata alla parte
+    bassa sinistra dello schermo.
+  */
+  width: calc(50vw - 40px);
+  height: 44vh;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 20;
+}
+
+.project-hover-image {
+  position: absolute;
+
+  display: block;
+
+  width: clamp(140px, 18vw, 300px);
+  max-width: 70%;
+
+  height: auto;
+
+  opacity: 0;
+
+  transform: translateY(3px);
+
+  /*
+    Solo fade-in.
+    Quando esci dall'hover
+    l'elemento viene eliminato subito.
+  */
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+.project-hover-image.is-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* =========================
+   SITE CREDIT
+   ========================= */
+
+.site-credit {
+  position: fixed;
+
+  left: 50%;
+  bottom: 10px;
+
+  transform: translateX(-50%);
+
+  margin: 0;
+
+  font-family: "Times CG", serif;
+
+  font-weight: 400;
+  font-style: normal;
+
+  font-size: 12px;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  color: var(--text);
+
+  z-index: 1000;
+}
+
+.site-credit a {
+  color: inherit;
+
+  text-decoration: underline;
+
+  text-decoration-thickness: 1px;
+
+  text-underline-offset: 2px;
+}
+
+.site-credit a:visited {
+  color: inherit;
+}
+
+
+/* =========================
+   RESPONSIVE DESKTOP
+   ========================= */
+
+@media (max-width: 1200px) {
+  .project-hover-preview {
+    width: calc(50vw - 35px);
+    height: 40vh;
+  }
+
+  .project-hover-image {
+    width: clamp(130px, 17vw, 250px);
+    max-width: 72%;
+  }
+}
+
+@media (max-width: 1050px) {
+  .project-hover-preview {
+    width: calc(50vw - 30px);
+    height: 36vh;
+  }
+
+  .project-hover-image {
+    width: clamp(115px, 16vw, 210px);
+    max-width: 74%;
+  }
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
 @media (max-width: 900px) {
   .page {
-    grid-template-columns: var(--mobile-photo-w) var(--gutter) 1fr;
+    grid-template-columns:
+      var(--mobile-photo-w)
+      var(--gutter)
+      minmax(0, 1fr);
+
     column-gap: 0;
     row-gap: 20px;
 
-    /* margini 20px su tutti i lati */
     padding: var(--page-pad);
 
-    /* spazio extra per gif fixed */
-    padding-bottom: calc(var(--page-pad) + var(--gif-fixed-h));
+    padding-bottom:
+      calc(
+        var(--page-pad)
+        + var(--gif-fixed-h)
+      );
   }
+
+  /* PHOTO */
 
   .photo {
     grid-column: 1 / 2;
     grid-row: 1;
+
     justify-self: start;
     align-self: start;
   }
@@ -330,38 +533,59 @@ ul {
     height: auto;
   }
 
-  /* testo a destra della foto con margine destro 20px */
+  /* NAME + TAGLINE */
+
   .left {
     grid-column: 3 / 4;
     grid-row: 1;
-    justify-self: start;
+
+    justify-self: stretch;
     align-self: start;
-    text-align: left;
 
     width: 100%;
-    padding-right: var(--page-pad);
+    min-width: 0;
+
+    text-align: left;
   }
 
-  /* ✅ RIDOTTO: nome sempre su una riga e più piccolo su mobile */
   .brand {
     white-space: nowrap;
-    font-size: clamp(13px, 4.2vw, 19px);
-    margin-bottom: 20px; /* accapo tra nome e tagline */
+
+    font-size:
+      clamp(
+        13px,
+        4.2vw,
+        19px
+      );
+
+    margin-bottom: 20px;
   }
+
+  /* PROJECTS */
 
   .projects-area {
     grid-column: 1 / 4;
     grid-row: 2;
+
     justify-self: start;
+
+    width: 100%;
+    min-width: 0;
+
     text-align: left;
 
-    margin-top: var(--mobile-projects-offset);
+    margin-top:
+      var(--mobile-projects-offset);
   }
+
+  /* ABOUT */
 
   .right {
     grid-column: 1 / 4;
     grid-row: 3;
+
     justify-self: start;
+
     text-align: left;
   }
 
@@ -370,11 +594,14 @@ ul {
     white-space: normal;
   }
 
-  /* GIF fixed bottom con margini 20px dx/sx */
+  /* GIF MOBILE */
+
   .hero-gif {
     position: fixed;
+
     left: var(--page-pad);
     right: var(--page-pad);
+
     bottom: 0;
     top: auto;
 
@@ -382,44 +609,35 @@ ul {
     height: var(--gif-fixed-h);
 
     z-index: 999;
+
     pointer-events: none;
   }
 
   .hero-gif img {
     width: 100%;
     height: 100%;
+
     object-fit: contain;
     object-position: bottom;
   }
-}
 
-.site-credit {
-  position: fixed;
-  left: 50%;
-  bottom: 20px;
-  transform: translateX(-50%);
+  /* NO PROJECT PREVIEW ON MOBILE */
 
-  margin: 0;
+  .project-hover-preview {
+    display: none;
+  }
 
-  font-family: "Times CG", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 12px;
-  line-height: 1;
+  /* SITE CREDIT MOBILE */
 
-  white-space: nowrap;
-  color: var(--text);
+  .site-credit {
+    font-size: 10px;
 
-  z-index: 1000;
-}
+    max-width: calc(100vw - 40px);
 
-.site-credit a {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-}
+    white-space: normal;
 
-.site-credit a:visited {
-  color: inherit;
+    text-align: center;
+
+    line-height: 1.15;
+  }
 }
