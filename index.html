@@ -18,7 +18,7 @@
 
     <link
       rel="stylesheet"
-      href="css/stili.css?v=5"
+      href="css/stili.css?v=6"
     />
   </head>
 
@@ -35,7 +35,9 @@
 
       <!-- NOME + TAGLINE -->
       <section class="left">
-        <h1 class="brand">Simone Grimaldi</h1>
+        <h1 class="brand">
+          Simone Grimaldi
+        </h1>
 
         <p class="tagline">
           Graphic Designer?<br />
@@ -53,7 +55,9 @@
 
       <!-- PROJECTS -->
       <section class="projects-area">
-        <h2 class="section-title">Projects</h2>
+        <h2 class="section-title">
+          Projects
+        </h2>
 
         <ul class="projects">
 
@@ -224,6 +228,7 @@
             <a
               class="project-link"
               href="./projects/eat.html"
+              data-preview="eat"
             >
               <span class="project-title">
                 Eat!
@@ -290,6 +295,7 @@
         document.querySelectorAll("[data-preview]");
 
       const projectPreviews = {
+
         "fine-dust": [
           "./images/projects/fine-dust/01.jpg",
           "./images/projects/fine-dust/02.jpg",
@@ -343,6 +349,12 @@
           "./images/projects/circolocerchi/2.jpg"
         ],
 
+        "eat": [
+          "./images/projects/eat/01.jpg",
+          "./images/projects/eat/02.jpg",
+          "./images/projects/eat/03.jpg"
+        ],
+
         "junks": [
           "./images/projects/junks/1.png",
           "./images/projects/junks/2_.jpg",
@@ -363,9 +375,6 @@
 
         previewTimers = [];
 
-        /*
-          Sparizione immediata.
-        */
         previewContainer.innerHTML = "";
       }
 
@@ -383,10 +392,16 @@
           image.offsetHeight;
 
         const maxLeft =
-          Math.max(0, containerWidth - imageWidth);
+          Math.max(
+            0,
+            containerWidth - imageWidth
+          );
 
         const maxTop =
-          Math.max(0, containerHeight - imageHeight);
+          Math.max(
+            0,
+            containerHeight - imageHeight
+          );
 
         image.style.left =
           `${randomBetween(0, maxLeft)}px`;
@@ -411,6 +426,7 @@
 
         image.src = src;
         image.alt = "";
+
         image.className =
           "project-hover-image";
 
@@ -439,13 +455,18 @@
         clearPreview();
 
         images.forEach((src, index) => {
+
           /*
-            1ª foto: subito
-            2ª foto: dopo 1 secondo
-            3ª foto: dopo 2 secondi
+            Prima foto: subito
+            Seconda foto: dopo 1 secondo
+            Terza foto: dopo 2 secondi
           */
+
           const timer = setTimeout(() => {
-            addPreviewImage(src, index);
+            addPreviewImage(
+              src,
+              index
+            );
           }, index * 1000);
 
           previewTimers.push(timer);

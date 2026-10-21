@@ -84,6 +84,7 @@ body {
   color: var(--text);
 
   font-family: var(--body-font);
+
   font-size: 20px;
   font-weight: 500;
   font-style: italic;
@@ -252,9 +253,11 @@ ul {
    ========================= */
 
 .tagline {
-  margin-top: var(--space-block);
+  margin-top:
+    var(--space-block);
 
-  font-family: var(--serif-font);
+  font-family:
+    var(--serif-font);
 
   font-weight: 400;
   font-style: normal;
@@ -270,13 +273,15 @@ ul {
    ========================= */
 
 .projects {
-  margin-top: var(--space-block);
+  margin-top:
+    var(--space-block);
 
   list-style: none;
 }
 
 .project {
-  margin-bottom: var(--space-project);
+  margin-bottom:
+    var(--space-project);
 }
 
 
@@ -315,7 +320,8 @@ ul {
    ========================= */
 
 .project-title {
-  font-family: var(--body-font);
+  font-family:
+    var(--body-font);
 
   font-weight: 500;
   font-style: italic;
@@ -337,7 +343,8 @@ ul {
    ========================= */
 
 .date {
-  font-family: var(--date-font);
+  font-family:
+    var(--date-font);
 
   font-weight: 400;
   font-style: normal;
@@ -353,9 +360,11 @@ ul {
    ========================= */
 
 .project-meta {
-  margin-top: var(--space-title-meta);
+  margin-top:
+    var(--space-title-meta);
 
-  font-family: var(--serif-font);
+  font-family:
+    var(--serif-font);
 
   font-weight: 400;
   font-style: normal;
@@ -376,11 +385,9 @@ ul {
   left: 20px;
   bottom: 35px;
 
-  /*
-    Area dedicata alla parte
-    bassa sinistra dello schermo.
-  */
-  width: calc(50vw - 40px);
+  width:
+    calc(50vw - 40px);
+
   height: 44vh;
 
   overflow: hidden;
@@ -395,20 +402,22 @@ ul {
 
   display: block;
 
-  width: clamp(140px, 18vw, 300px);
+  width:
+    clamp(
+      140px,
+      18vw,
+      300px
+    );
+
   max-width: 70%;
 
   height: auto;
 
   opacity: 0;
 
-  transform: translateY(3px);
+  transform:
+    translateY(3px);
 
-  /*
-    Solo fade-in.
-    Quando esci dall'hover
-    l'elemento viene eliminato subito.
-  */
   transition:
     opacity 220ms ease,
     transform 220ms ease;
@@ -417,7 +426,8 @@ ul {
 .project-hover-image.is-visible {
   opacity: 1;
 
-  transform: translateY(0);
+  transform:
+    translateY(0);
 }
 
 
@@ -431,11 +441,14 @@ ul {
   left: 50%;
   bottom: 10px;
 
-  transform: translateX(-50%);
+  transform:
+    translateX(-50%);
 
   margin: 0;
 
-  font-family: "Times CG", serif;
+  font-family:
+    "Times CG",
+    serif;
 
   font-weight: 400;
   font-style: normal;
@@ -472,24 +485,40 @@ ul {
 
 @media (max-width: 1200px) {
   .project-hover-preview {
-    width: calc(50vw - 35px);
+    width:
+      calc(50vw - 35px);
+
     height: 40vh;
   }
 
   .project-hover-image {
-    width: clamp(130px, 17vw, 250px);
+    width:
+      clamp(
+        130px,
+        17vw,
+        250px
+      );
+
     max-width: 72%;
   }
 }
 
 @media (max-width: 1050px) {
   .project-hover-preview {
-    width: calc(50vw - 30px);
+    width:
+      calc(50vw - 30px);
+
     height: 36vh;
   }
 
   .project-hover-image {
-    width: clamp(115px, 16vw, 210px);
+    width:
+      clamp(
+        115px,
+        16vw,
+        210px
+      );
+
     max-width: 74%;
   }
 }
@@ -507,9 +536,11 @@ ul {
       minmax(0, 1fr);
 
     column-gap: 0;
+
     row-gap: 20px;
 
-    padding: var(--page-pad);
+    padding:
+      var(--page-pad);
 
     padding-bottom:
       calc(
@@ -517,6 +548,7 @@ ul {
         + var(--gif-fixed-h)
       );
   }
+
 
   /* PHOTO */
 
@@ -532,6 +564,7 @@ ul {
     width: 100%;
     height: auto;
   }
+
 
   /* NAME + TAGLINE */
 
@@ -561,6 +594,7 @@ ul {
     margin-bottom: 20px;
   }
 
+
   /* PROJECTS */
 
   .projects-area {
@@ -578,6 +612,7 @@ ul {
       var(--mobile-projects-offset);
   }
 
+
   /* ABOUT */
 
   .right {
@@ -594,19 +629,26 @@ ul {
     white-space: normal;
   }
 
+
   /* GIF MOBILE */
 
   .hero-gif {
     position: fixed;
 
-    left: var(--page-pad);
-    right: var(--page-pad);
+    left:
+      var(--page-pad);
+
+    right:
+      var(--page-pad);
 
     bottom: 0;
+
     top: auto;
 
     width: auto;
-    height: var(--gif-fixed-h);
+
+    height:
+      var(--gif-fixed-h);
 
     z-index: 999;
 
@@ -618,21 +660,25 @@ ul {
     height: 100%;
 
     object-fit: contain;
+
     object-position: bottom;
   }
 
-  /* NO PROJECT PREVIEW ON MOBILE */
+
+  /* NO PREVIEW MOBILE */
 
   .project-hover-preview {
     display: none;
   }
+
 
   /* SITE CREDIT MOBILE */
 
   .site-credit {
     font-size: 10px;
 
-    max-width: calc(100vw - 40px);
+    max-width:
+      calc(100vw - 40px);
 
     white-space: normal;
 
